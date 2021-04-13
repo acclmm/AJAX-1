@@ -22,7 +22,8 @@ var server = http.createServer(function (request, response) {
   /******** 从这里开始看，上面不要看 ************/
 
   console.log("有个傻子发请求过来啦！路径（带查询参数）为：" + pathWithQuery);
-
+  console.log("method:");
+  console.log(method);
   if (path === "/index.html") {
     response.statusCode = 200;
     response.setHeader("Content-Type", "text/html;charset=utf-8");
@@ -38,7 +39,7 @@ var server = http.createServer(function (request, response) {
     response.setHeader("Content-Type", "text/javascript;charset=utf-8");
     response.write(fs.readFileSync("public/main.js"));
     response.end();
-  } else if (path === "/style.css" || path === "/2.css") {
+  } else if (path === "/style.css") {
     response.statusCode = 200;
     response.setHeader("Content-Type", "text/css;charset=utf-8");
     response.write(fs.readFileSync("public/style.css"));
